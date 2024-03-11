@@ -1,0 +1,6 @@
+# cloudbuild.yaml
+steps:
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', 'process_data.py', 'gs://bodnet_data/scripts/']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['dataproc', 'jobs', 'submit', 'pyspark', 'gs://bodnet_data/scripts/process_data.py']
